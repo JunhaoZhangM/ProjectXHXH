@@ -70,3 +70,5 @@ ProjectXX/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 # Temporary auto-generated Android Assets
 ProjectXX/[Aa]ssets/[Ss]treamingAssets/aa.meta
 ProjectXX/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+.vscode/

@@ -5,42 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Tools
+
+class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    class MonoSingleton<T> : MonoBehaviour  where T : MonoBehaviour
+    public bool Global = true;
+    private static T instance;
+    public static T Instance
     {
-        public bool Global = true;
-        private static T instance;
-        public static T Instance
+        get
         {
-            get
+            if (instance == null)
             {
-                if (instance == null)
-                {
-                    instance = FindObjectOfType<T>();
-                }
-                return instance;
+                instance = FindObjectOfType<T>();
             }
-        }
-
-        private void Awake()
-        {
-            if (Global)
-            {
-                if(instance!=null && instance != gameObject.GetComponent<T>())
-                {
-                    Destroy(gameObject);
-                    return;
-                }
-                DontDestroyOnLoad(gameObject);
-                instance = gameObject.GetComponent<T>();
-            }
-            OnStart();
-        }
-        
-        protected virtual void OnStart()
-        {
-
+            return instance;
         }
     }
+
+    private void Awake()
+    {
+        if (Global)
+        {
+            if (instance != null && instance != gameObject.GetComponent<T>())
+            {
+                Destroy(gameObject);
+                return;
+            }
+            DontDestroyOnLoad(gameObject);
+            instance = gameObject.GetComponent<T>();
+        }
+        OnStart();
+    }
+
+    protected virtual void OnStart()
+    {
+
+    }
 }
+

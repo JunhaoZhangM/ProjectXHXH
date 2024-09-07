@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tools;
 using UnityEngine;
 
 namespace Managers
@@ -21,7 +20,7 @@ namespace Managers
         private void CreatePool<T>(string name, float releaseTime) where T : PoolBase
         {
             PoolBase pool;
-            if(!_Pools.TryGetValue(name,out pool))
+            if (!_Pools.TryGetValue(name, out pool))
             {
                 GameObject go = new GameObject(name);
                 go.transform.SetParent(_PoolParent);
@@ -31,25 +30,25 @@ namespace Managers
             }
         }
 
-        public void CreateGameObjectPool(string name,float releaseTime)
+        public void CreateGameObjectPool(string name, float releaseTime)
         {
             CreatePool<GameObjectPool>(name, releaseTime);
         }
 
-        public Object Spawn(string poolName,string objName)
+        public Object Spawn(string poolName, string objName)
         {
             PoolBase pool;
-            if(_Pools.TryGetValue(poolName,out pool))
+            if (_Pools.TryGetValue(poolName, out pool))
             {
                 return pool.Spawn(objName);
             }
             return null;
         }
 
-        public void UnSpawn(string poolName,string objName,Object obj)
+        public void UnSpawn(string poolName, string objName, Object obj)
         {
             PoolBase pool;
-            if(_Pools.TryGetValue(poolName,out pool))
+            if (_Pools.TryGetValue(poolName, out pool))
             {
                 pool.UnSpawn(objName, obj);
             }

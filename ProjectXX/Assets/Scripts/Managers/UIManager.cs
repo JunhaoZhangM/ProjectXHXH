@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tools;
 using UnityEngine;
 
 namespace Managers
@@ -18,7 +17,7 @@ namespace Managers
 
         void Awake()
         {
-            
+
         }
 
         public void SetUIGroup(int count)
@@ -31,15 +30,15 @@ namespace Managers
             }
         }
 
-        public UIBase OpenUI(string uiName,int groupID)
+        public UIBase OpenUI(string uiName, int groupID)
         {
-            if (_UIObjects.ContainsKey(uiName)) return null ;
+            if (_UIObjects.ContainsKey(uiName)) return null;
             GameObject go = PoolManager.Instance.Spawn("UI", uiName) as GameObject;
             if (go == null)
             {
                 go = Instantiate(ResourceManager.Instance.LoadUI(uiName)) as GameObject;
             }
-            go.transform.SetParent(_Layers[groupID],false);
+            go.transform.SetParent(_Layers[groupID], false);
 
             UIBase ui = go.GetComponent<UIBase>();
             ui.OnOpen();
@@ -51,7 +50,7 @@ namespace Managers
         public void CloseUI(string uiName)
         {
             UIBase ui;
-            if(_UIObjects.TryGetValue(uiName,out ui))
+            if (_UIObjects.TryGetValue(uiName, out ui))
             {
                 ui.OnClose();
                 _UIObjects.Remove(uiName);
