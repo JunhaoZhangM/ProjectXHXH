@@ -1,0 +1,32 @@
+{
+  "1": {
+    "ID": 1,
+    "Name": "2秒眩晕",
+    "Description": "2秒眩晕"
+  },
+  "2": {
+    "ID": 2,
+    "Name": "英勇",
+    "Description": "防御力增加50%"
+  },
+  "3": {
+    "ID": 3,
+    "Name": "破甲",
+    "Description": "防御力降低50%"
+  },
+  "4": {
+    "ID": 4,
+    "Name": "燃烧",
+    "Description": "每秒造成XXX点法术伤害"
+  },
+  "5": {
+    "ID": 5,
+    "Name": "流血",
+    "Description": "每秒造成XXX点物理伤害"
+  },
+  "6": {
+    "ID": 6,
+    "Name": "中毒",
+    "Description": "每秒造成XXX点法术伤害"
+  }
+}
