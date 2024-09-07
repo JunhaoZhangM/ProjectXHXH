@@ -73,3 +73,13 @@ ProjectXX/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 .vscode/
 .DS_Store
+./ProjectXX/Temp/.DS_Store
+./ProjectXX/.DS_Store
+./ProjectXX/Library/.DS_Store
+./ProjectXX/Library/PackageCache/com.unity.shadergraph@14.0.11/.DS_Store
+./ProjectXX/Library/PackageCache/.DS_Store
+./ProjectXX/Library/PackageCache/com.unity.visualscripting@1.9.4/.DS_Store
+./ProjectXX/Assets/.DS_Store
+./.DS_Store
+./.git/.DS_Store
+./Data/.DS_Store
