@@ -72,3 +72,4 @@ ProjectXX/[Aa]ssets/[Ss]treamingAssets/aa.meta
 ProjectXX/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 .vscode/
+.DS_Store
