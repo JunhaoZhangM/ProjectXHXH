@@ -8,8 +8,10 @@ namespace Entities
     public enum AttributeType
     {
         MaxHP = 0,
-        MaxEnergy = 1,
-        ATK = 2,
+        HP,
+        MaxEnergy,
+        Energy,
+        ATK,
         DEF,
         CRI,
         CRDamage,
@@ -20,6 +22,7 @@ namespace Entities
         HealAdd,
         EffectHit,
         ActionTime,
+        CurActionTime,
         Max
     }
     public class Attributes
@@ -31,9 +34,17 @@ namespace Entities
         /// </summary>
         public float MaxHP { get { return Data[(int)AttributeType.MaxHP]; } set { Data[(int)AttributeType.MaxHP] = value; } }
         /// <summary>
+        /// 当前生命值
+        /// </summary>
+        public float HP { get { return Data[(int)AttributeType.HP]; } set { Data[(int)AttributeType.HP] = value; } }
+        /// <summary>
         /// 最大能量值
         /// </summary>
-        public float MaxMP { get { return Data[(int)AttributeType.MaxEnergy]; } set { Data[(int)AttributeType.MaxEnergy] = value; } }
+        public float MaxEnergy { get { return Data[(int)AttributeType.MaxEnergy]; } set { Data[(int)AttributeType.MaxEnergy] = value; } }
+        /// <summary>
+        /// 当前能量值
+        /// </summary>
+        public float Energy { get { return Data[(int)AttributeType.Energy]; } set { Data[(int)AttributeType.Energy] = value; } }
         /// <summary>
         /// 攻击力
         /// </summary>
@@ -102,6 +113,15 @@ namespace Entities
         {
             get { return Data[(int)AttributeType.ActionTime]; }
             set { Data[(int)AttributeType.ActionTime] = value; }
+        }
+
+        /// <summary>
+        /// 当前行动周期
+        /// </summary>
+        public float CurActionTime
+        {
+            get { return Data[(int)AttributeType.CurActionTime]; }
+            set { Data[(int)AttributeType.CurActionTime] = value; }
         }
 
 

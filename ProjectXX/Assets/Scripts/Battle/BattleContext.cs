@@ -1,0 +1,7 @@
+namespace Battle
+{
+    class BattleContext
+    {
+
+    }
+}

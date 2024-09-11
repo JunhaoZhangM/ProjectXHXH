@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using Entities;
 using Unity.VisualScripting;
 
@@ -18,7 +19,7 @@ namespace Managers
             }
             else
             {
-                int retval = x.attributes.ActionTime.CompareTo(y.attributes.ActionTime);
+                int retval = x.attributes.CurActionTime.CompareTo(y.attributes.CurActionTime);
 
                 if (retval != 0)
                 {
@@ -47,26 +48,32 @@ namespace Managers
             for (int i = 0; i < creatures.Count; i++)
             {
                 creatures[i].attributes.ActionTime = 10000 / creatures[i].attributes.SPD;
+                creatures[i].attributes.CurActionTime = (int)creatures[i].attributes.ActionTime;
             }
             creatures.Sort(AC);
-            UpdateActionTime((int)creatures[0].attributes.ActionTime);
+            UpdateActionTime(-(int)creatures[0].attributes.ActionTime);
         }
 
         public void UpdateActionTime(int time)
         {
             for (int i = 0; i < creatures.Count; i++)
             {
-                creatures[i].attributes.ActionTime += time;
+                creatures[i].attributes.CurActionTime += time;
             }
         }
 
         public void OnAttack()
         {
             Creature creature = creatures[0];
-            for (int i = 0; i < creatures.Count; i++)
-            {
-                creature.attributes.ActionTime = 10000;
-            }
+            creatures.Remove(creature);
+            creatures.Add(creature);
+            creature.attributes.CurActionTime = (int)creature.attributes.ActionTime;
+            UpdateActionTime(-(int)creatures[0].attributes.CurActionTime);
+            creatures.Sort(AC);
+        }
+        public void OnUpdate()
+        {
+            creatures.Sort(AC);
         }
     }
 }

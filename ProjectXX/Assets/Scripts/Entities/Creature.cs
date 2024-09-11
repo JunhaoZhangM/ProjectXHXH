@@ -32,5 +32,11 @@ namespace Entities
         {
 
         }
+        public Creature(string name, int spd)
+        {
+            this.name = name;
+            attributes = new Attributes();
+            attributes.SPD = spd;
+        }
     }
 }
