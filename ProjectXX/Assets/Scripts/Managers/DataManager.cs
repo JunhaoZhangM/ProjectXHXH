@@ -13,7 +13,8 @@ namespace Managers
     class DataManager : Singleton<DataManager>
     {
         public string DataPath="Data/";
-        public Dictionary<int, ExampleInfo> Example = null;
+        public Dictionary<int, CharacterDefine> Characters = null;
+        public Dictionary<int, Dictionary<int,SkillDefine>> Skills = null;
 
         public DataManager()
         {
@@ -23,8 +24,11 @@ namespace Managers
 
         public void Load()
         {
-            string json = File.ReadAllText(DataPath + "ExampleInfo.txt");
-            Example = JsonConvert.DeserializeObject<Dictionary<int, ExampleInfo>>(json);
+            string json = File.ReadAllText(DataPath + "CharacterDefine.txt");
+            Characters = JsonConvert.DeserializeObject<Dictionary<int, CharacterDefine>>(json);
+            json = File.ReadAllText(DataPath + "SkillDefine.txt");
+            Skills = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SkillDefine>>>(json);
+
         }
     }
 }

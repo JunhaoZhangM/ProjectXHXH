@@ -18,5 +18,10 @@ namespace Managers
         {
             return Resources.Load(AppConst.UIPath + name) ;
         }
+
+        public T Load<T>(string path) where T : Object
+        {
+            return Resources.Load<T>(path);
+        }
     }
 }

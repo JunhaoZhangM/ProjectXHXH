@@ -1,6 +1,7 @@
 json-excel\json-excel json Tables\ Data\
 
-@copy Data\ExampleInfo.txt ..\ProjectXX\Data\
+@copy Data\SkillDefine.txt ..\ProjectXX\Data\
+@copy Data\CharacterDefine.txt ..\ProjectXX\Data\
 
 
 pause

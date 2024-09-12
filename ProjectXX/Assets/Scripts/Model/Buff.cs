@@ -13,9 +13,9 @@ namespace Model
             this.define = define;
         }
 
-        public void DoBuff(Creature target)
+        public void DoBuff(CharBase target)
         {
-            if (define.Type == BuffType.Attributes)
+            if (define.BuffType == BuffType.Attributes)
             {
                 if (define.ActionTimeRatio > 0)
                 {

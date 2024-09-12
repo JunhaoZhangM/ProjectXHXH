@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using Battle;
 using Entities;
+using Event;
 using Unity.VisualScripting;
 
 namespace Managers
 {
-    public class ActionTimeCompare : IComparer<Creature>
+    public class ActionTimeCompare : IComparer<CharBase>
     {
-        public int Compare(Creature x, Creature y)
+        public int Compare(CharBase x, CharBase y)
         {
             if (x == null)
             {
@@ -39,12 +41,14 @@ namespace Managers
         public int round;
         public int maxRound;
         public int accumalteActionTime;
-        public List<Creature> creatures = new List<Creature>();
+        public CharBase curActionCreature;
+        public List<CharBase> creatures = new List<CharBase>();
         public ActionTimeCompare AC = new ActionTimeCompare();
         public void Init()
         {
             round = 0;
             accumalteActionTime = 0;
+            creatures.AddRange(BattleManager.Instance.Team);
             for (int i = 0; i < creatures.Count; i++)
             {
                 creatures[i].attributes.ActionTime = 10000 / creatures[i].attributes.SPD;
@@ -52,6 +56,8 @@ namespace Managers
             }
             creatures.Sort(AC);
             UpdateActionTime(-(int)creatures[0].attributes.ActionTime);
+            BattleManager.Instance.SetCurPlayer(creatures[0]);
+            EventManager.Instance.Fire("RoundInit", creatures);
         }
 
         public void UpdateActionTime(int time)
@@ -64,16 +70,18 @@ namespace Managers
 
         public void OnAttack()
         {
-            Creature creature = creatures[0];
+            CharBase creature = creatures[0];
             creatures.Remove(creature);
             creatures.Add(creature);
             creature.attributes.CurActionTime = (int)creature.attributes.ActionTime;
             UpdateActionTime(-(int)creatures[0].attributes.CurActionTime);
-            creatures.Sort(AC);
+            OnUpdate();
         }
         public void OnUpdate()
         {
             creatures.Sort(AC);
+            BattleManager.Instance.SetCurPlayer(creatures[0]);
+            EventManager.Instance.Fire("ActionTimeUpdate",creatures);
         }
     }
 }

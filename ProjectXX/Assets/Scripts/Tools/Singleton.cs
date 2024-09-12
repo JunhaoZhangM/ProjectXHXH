@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Singleton<T> where T : new()
+public class Singleton<T> where T : new()
 {
     private static readonly object _lock = new object();
     private static T instance;

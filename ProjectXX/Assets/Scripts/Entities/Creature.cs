@@ -1,10 +1,14 @@
+using Data;
+using Managers;
 using UnityEngine;
 
 namespace Entities
 {
-    public class Creature : Entity
+    public class CharBase : Entity
     {
         public Attributes attributes;
+        public SkillManager SkillMgr;
+        public CharacterDefine define;
         public void OnUpdate()
         {
 
@@ -32,11 +36,12 @@ namespace Entities
         {
 
         }
-        public Creature(string name, int spd)
+        public CharBase(CharacterDefine define)
         {
-            this.name = name;
-            attributes = new Attributes();
-            attributes.SPD = spd;
+            this.name = define.Name;
+            this.define = define;
+            attributes = new Attributes(define);
+            SkillMgr = new SkillManager(this);
         }
     }
 }

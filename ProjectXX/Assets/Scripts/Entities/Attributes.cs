@@ -1,136 +1,94 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Entities
 {
-    public enum AttributeType
-    {
-        MaxHP = 0,
-        HP,
-        MaxEnergy,
-        Energy,
-        ATK,
-        DEF,
-        CRI,
-        CRDamage,
-        SPD,
-        EnergyRecoveryEfficiency,
-        EffectResistance,
-        BreakDamage,
-        HealAdd,
-        EffectHit,
-        ActionTime,
-        CurActionTime,
-        Max
-    }
     public class Attributes
     {
-        private float[] Data = new float[(int)AttributeType.Max];
-
         /// <summary>
         /// 最大生命值
         /// </summary>
-        public float MaxHP { get { return Data[(int)AttributeType.MaxHP]; } set { Data[(int)AttributeType.MaxHP] = value; } }
+        public float MaxHP;
         /// <summary>
         /// 当前生命值
         /// </summary>
-        public float HP { get { return Data[(int)AttributeType.HP]; } set { Data[(int)AttributeType.HP] = value; } }
+        public float HP;
         /// <summary>
         /// 最大能量值
         /// </summary>
-        public float MaxEnergy { get { return Data[(int)AttributeType.MaxEnergy]; } set { Data[(int)AttributeType.MaxEnergy] = value; } }
+        public float MaxEnergy;
         /// <summary>
         /// 当前能量值
         /// </summary>
-        public float Energy { get { return Data[(int)AttributeType.Energy]; } set { Data[(int)AttributeType.Energy] = value; } }
+        public float Energy;
         /// <summary>
         /// 攻击力
         /// </summary>
-        public float ATK { get { return Data[(int)AttributeType.ATK]; } set { Data[(int)AttributeType.ATK] = value; } }
+        public float ATK;
         /// <summary>
         /// 防御力
         /// </summary>
-        public float DEF { get { return Data[(int)AttributeType.DEF]; } set { Data[(int)AttributeType.DEF] = value; } }
+        public float DEF;
         /// <summary>
         /// 暴击率
         /// </summary>
-        public float CRI { get { return Data[(int)AttributeType.CRI]; } set { Data[(int)AttributeType.CRI] = value; } }
+        public float CRI;
         /// <summary>
         /// 暴击伤害
         /// </summary>
-        public float CRDamage { get { return Data[(int)AttributeType.CRDamage]; } set { Data[(int)AttributeType.CRDamage] = value; } }
+        public float CRDamage;
         /// <summary>
         /// 速度
         /// </summary>
-        public float SPD { get { return Data[(int)AttributeType.SPD]; } set { Data[(int)AttributeType.SPD] = value; } }
+        public float SPD;
         /// <summary>
         /// 能量回复效率
         /// </summary>
-        public float EnergyRecoveryEfficiency
-        {
-            get { return Data[(int)AttributeType.EnergyRecoveryEfficiency]; }
-            set { Data[(int)AttributeType.EnergyRecoveryEfficiency] = value; }
-        }
+        public float EnergyRecoveryEfficiency;
         /// <summary>
         /// 效果抵抗
         /// </summary>
-        public float EffectResistance
-        {
-            get { return Data[(int)AttributeType.EffectResistance]; }
-            set { Data[(int)AttributeType.EffectResistance] = value; }
-        }
+        public float EffectResistance;
         /// <summary>
         /// 击破特攻
         /// </summary>
-        public float BreakDamage
-        {
-            get { return Data[(int)AttributeType.BreakDamage]; }
-            set { Data[(int)AttributeType.BreakDamage] = value; }
-        }
+        public float BreakDamage;
         /// <summary>
         /// 治疗量加成
         /// </summary>
-        public float HealAdd
-        {
-            get { return Data[(int)AttributeType.HealAdd]; }
-            set { Data[(int)AttributeType.HealAdd] = value; }
-        }
+        public float HealAdd;
         /// <summary>
         /// 效果命中
         /// </summary>
-        public float EffectHit
-        {
-            get { return Data[(int)AttributeType.EffectHit]; }
-            set { Data[(int)AttributeType.EffectHit] = value; }
-        }
-
+        public float EffectHit;
         /// <summary>
         /// 行动周期
         /// </summary>
-        public float ActionTime
-        {
-            get { return Data[(int)AttributeType.ActionTime]; }
-            set { Data[(int)AttributeType.ActionTime] = value; }
-        }
+        public float ActionTime;
 
         /// <summary>
         /// 当前行动周期
         /// </summary>
-        public float CurActionTime
-        {
-            get { return Data[(int)AttributeType.CurActionTime]; }
-            set { Data[(int)AttributeType.CurActionTime] = value; }
-        }
+        public float CurActionTime;
 
-
-        public void Reset()
+        public Attributes(CharacterDefine define)
         {
-            for (int i = 0; i < (int)AttributeType.Max; i++)
-            {
-                Data[i] = 0;
-            }
+            MaxHP = define.MaxHP;
+            MaxEnergy = define.MaxEnergy;
+            ATK = define.ATK;
+            DEF = define.DEF;
+            CRI = define.CRI;
+            CRDamage = define.CRDamage;
+            SPD = define.SPD;
+            EnergyRecoveryEfficiency = define.EnergyRecoveryEfficiency;
+            EffectResistance = define.EffectResistance;
+            BreakDamage = define.BreakDamage;
+            HealAdd = define.HealAdd;
+            EffectHit = define.EffectHit;
         }
     }
 }

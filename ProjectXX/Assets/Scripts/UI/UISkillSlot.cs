@@ -3,11 +3,11 @@ using Model;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
-{
-    class UISkillSlot : MonoBehaviour
+    public class UISkillSlot : MonoBehaviour
     {
         public Button button;
+        public Image Icon;
+        public Text Name;
         Skill skill;
         void Start()
         {
@@ -22,6 +22,7 @@ namespace UI
         public void SetSkillInfo(Skill skill)
         {
             this.skill = skill;
+            Name.text = skill.define.Name;
         }
     }
-}
+

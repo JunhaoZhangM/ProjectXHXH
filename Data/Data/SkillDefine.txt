@@ -1,0 +1,208 @@
+{
+  "1": {
+    "101": {
+      "ID": 101,
+      "Name": "夜间喧嚣不止",
+      "AtkRatio": 90,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 6,
+      "EnergyRecovery": 0,
+      "BreakDamage": 10,
+      "Point": 1,
+      "Energy": 10,
+      "Type": "Normal",
+      "TargetType": "Enemy"
+    },
+    "102": {
+      "ID": 102,
+      "Name": "月光婆娑连绵",
+      "Description": "角色选定目标，并对目标发起冲锋并造成伤害，被冲锋的目标原地眩晕2秒",
+      "AtkRatio": 100,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 0,
+      "BreakDamage": 20,
+      "Point": -1,
+      "Energy": 20,
+      "Type": "Special",
+      "TargetType": "Enemy"
+    },
+    "103": {
+      "ID": 103,
+      "Name": "悲剧尽头的颤音",
+      "AtkRatio": 120,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 100,
+      "BreakDamage": 20,
+      "Point": 0,
+      "Energy": -100,
+      "Type": "Ultimate",
+      "TargetType": "Enemy"
+    }
+  },
+  "2": {
+    "201": {
+      "ID": 201,
+      "Name": "|系统警告|",
+      "AtkRatio": 90,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 6,
+      "EnergyRecovery": 0,
+      "BreakDamage": 10,
+      "Point": 1,
+      "Energy": 10,
+      "Type": "Normal",
+      "TargetType": "Enemy"
+    },
+    "202": {
+      "ID": 202,
+      "Name": "是否允许更改？",
+      "Description": "角色空手凝聚火焰能量球（蓄力），之后先前推出火球伤害敌方角色",
+      "AtkRatio": 100,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 0,
+      "BreakDamage": 20,
+      "Point": -1,
+      "Energy": 20,
+      "Type": "Special",
+      "TargetType": "Enemy"
+    },
+    "203": {
+      "ID": 203,
+      "Name": "|账号已封禁|",
+      "AtkRatio": 120,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 100,
+      "BreakDamage": 20,
+      "Point": 0,
+      "Energy": -100,
+      "Type": "Ultimate",
+      "TargetType": "Enemy"
+    }
+  },
+  "3": {
+    "301": {
+      "ID": 301,
+      "Name": "三途枯榷",
+      "Description": "角色手持法杖，漂浮半空召唤流行雨，对圆形区域敌方角色造成AOE法术伤害",
+      "AtkRatio": 90,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 6,
+      "EnergyRecovery": 0,
+      "BreakDamage": 10,
+      "Point": 1,
+      "Energy": 10,
+      "Type": "Normal",
+      "TargetType": "Enemy"
+    },
+    "302": {
+      "ID": 302,
+      "Name": "八雷飞渡",
+      "Description": "角色单手指向前方瞬间施法，目标受到一次单体火焰高额伤害，并附带火焰冲击Debuff",
+      "AtkRatio": 100,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 0,
+      "BreakDamage": 20,
+      "Point": -1,
+      "Energy": 20,
+      "Type": "Special",
+      "TargetType": "Enemy"
+    },
+    "303": {
+      "ID": 303,
+      "Name": "残梦尽染，一刀缭断",
+      "AtkRatio": 120,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 100,
+      "BreakDamage": 20,
+      "Point": 0,
+      "Energy": -100,
+      "Type": "Ultimate",
+      "TargetType": "Enemy"
+    }
+  },
+  "4": {
+    "401": {
+      "ID": 401,
+      "Name": "驭风的子弹",
+      "AtkRatio": 90,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 6,
+      "EnergyRecovery": 0,
+      "BreakDamage": 10,
+      "Point": 1,
+      "Energy": 10,
+      "Type": "Normal",
+      "TargetType": "Enemy"
+    },
+    "402": {
+      "ID": 402,
+      "Name": "作战再部署",
+      "Description": "角色蓄力拉出满弓，射出流血箭，对目标造成大量伤害，并造成流血效果",
+      "AtkRatio": 100,
+      "DamageRatio": 0,
+      "Buff": [
+        1,
+        2,
+        3
+      ],
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 0,
+      "BreakDamage": 20,
+      "Point": -1,
+      "Energy": 20,
+      "Type": "Special",
+      "TargetType": "Allied"
+    },
+    "403": {
+      "ID": 403,
+      "Name": "贝洛伯格进行曲",
+      "Description": "角色选定一个圆形区域并持弓向天射出多支毒箭，对区域内目标造成一次物理伤害并使区域内目标中毒",
+      "AtkRatio": 120,
+      "DamageRatio": 0,
+      "Buff": [
+        4,
+        5
+      ],
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 100,
+      "BreakDamage": 20,
+      "Point": 0,
+      "Energy": -100,
+      "Type": "Ultimate",
+      "TargetType": "Allied"
+    },
+    "304": {
+      "ID": 304,
+      "Name": "先人一步",
+      "Description": "角色持弓对单个目标连射三箭，每箭伤害递增并最终造成大量物理伤害",
+      "AtkRatio": 0,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 1,
+      "EnergyRecovery": 0,
+      "BreakDamage": 0,
+      "Point": 0,
+      "Energy": 0,
+      "Type": "Passive",
+      "TargetType": "Allied"
+    }
+  }
+}
