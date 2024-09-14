@@ -24,7 +24,7 @@ namespace Managers
         {
             foreach (var pair in DataManager.Instance.Skills[owner.define.ID])
             {
-                Skill skill = new Skill(pair.Value);
+                Skill skill = new Skill(pair.Value,owner);
                 skills.Add(skill);
             }
         }

@@ -28,9 +28,9 @@ namespace GameObjectController
 
         IEnumerator InitGameObject()
         {
-            for(int i = 0; i < BattleManager.Instance.Team.Count; i++)
+            for(int i = 0; i < BattleManager.Instance.Units.Count; i++)
             {
-                AssignGameObject(BattleManager.Instance.Team[i], Test[i]);
+                AssignGameObject(BattleManager.Instance.Units[i], Test[i]);
             }
             yield return null;
         }
@@ -40,6 +40,7 @@ namespace GameObjectController
             EntityController ec = gameObject.GetComponent<EntityController>();
             ec.entity = creature;
             creature.Controller = ec;
+            Creatures.Add(creature.entityID, gameObject);
             Debug.LogFormat("{0}:{1}",ec.gameObject.name,creature.name);
         }
     }

@@ -23,6 +23,19 @@ namespace Entities
         EffectHit,
         ActionTime,
         CurActionTime,
+        DamageUpgrade,
+        PhysicalAtk,
+        FireAtk,
+        WindAtk,
+        ThunderAtk,
+        ImaginaryAtk,
+        QuantumAtk,
+        PhysicalDEF,
+        FireDEF,
+        WindDEF,
+        ThunderDEF,
+        ImaginaryDEF,
+        QuantumDEF,
         Max
     }
     public class AttributeData
@@ -123,6 +136,10 @@ namespace Entities
             get { return Data[(int)AttributeType.CurActionTime]; }
             set { Data[(int)AttributeType.CurActionTime] = value; }
         }
+
+        public List<float> ElementAtk;
+
+        public List<float> ElementEDF;
 
 
         public void Reset()

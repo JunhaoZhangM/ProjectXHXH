@@ -45,7 +45,7 @@ public class UITeam : MonoBehaviour
 
     private void OnBattleBegin(object arg1, object arg2)
     {
-        foreach(var creature in BattleManager.Instance.Team)
+        foreach(var creature in BattleManager.Instance.Units)
         {
             GameObject go = Instantiate(Prefab, parent);
             UITeamElement ui = go.GetComponent<UITeamElement>();

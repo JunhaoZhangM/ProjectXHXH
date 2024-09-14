@@ -1,3 +1,4 @@
+using Data;
 using Entities;
 using Event;
 using System;
@@ -16,7 +17,13 @@ public class UISkillSlots : MonoBehaviour
 
     private void Refresh(object arg1, CharBase player)
     {
-        int idx = 0;
+        if (player.Faction == TargetType.Enemy)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        gameObject.SetActive(true);
+            int idx = 0;
         foreach(var skill in player.SkillMgr.skills)
         {
             if (idx == 2) break;

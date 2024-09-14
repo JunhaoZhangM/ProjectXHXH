@@ -28,4 +28,12 @@ namespace Data
         Passive,
         Ultimate
     }
+
+    public enum SkillResult
+    {
+        OK=0,
+        CoolDown,
+        LackOfPoint,
+        LackOfEnergy
+    }
 }

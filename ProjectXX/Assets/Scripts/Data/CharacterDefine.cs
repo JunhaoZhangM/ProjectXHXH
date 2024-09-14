@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace Data
 {
+    public enum ElementType
+    {
+        Physical=1,
+        Fire=2,
+        Wind=4,
+        Thunder=8,
+        Imaginary=16,
+        Quantum=32,
+    }
     public class CharacterDefine
     {
         public int ID { get; set; }
@@ -13,6 +22,7 @@ namespace Data
         public string ModelResource { get; set; }
         public string IconResource { get; set; }
 
+        public ElementType ElementType { get; set; }
         /// <summary>
         /// 最大生命值
         /// </summary>

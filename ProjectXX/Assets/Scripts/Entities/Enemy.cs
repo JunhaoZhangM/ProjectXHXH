@@ -1,5 +1,5 @@
-﻿using Data;
-using Managers;
+﻿using Assets.Scripts.AI;
+using Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Character : CharBase
+    public class Enemy : CharBase
     {
-        public Character(CharacterDefine define) : base(define)
+        public AIAgent agent;
+        public Enemy(CharacterDefine define) : base(define)
         {
+
         }
     }
 }

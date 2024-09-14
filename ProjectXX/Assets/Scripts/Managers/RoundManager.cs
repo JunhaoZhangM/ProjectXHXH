@@ -36,19 +36,41 @@ namespace Managers
         }
     }
 
+    public enum RoundStatus
+    {
+        PreSettle,
+        PlayerAction,
+        ActionExecute,
+        RoundEnd
+    }
+
     class RoundManager : Singleton<RoundManager>
     {
         public int round;
         public int maxRound;
         public int accumalteActionTime;
+
+        public RoundStatus roundStatus;
+
         public CharBase curActionCreature;
         public List<CharBase> creatures = new List<CharBase>();
         public ActionTimeCompare AC = new ActionTimeCompare();
+
+        public RoundManager()
+        {
+            EventManager.Instance.Subscribe<CharBase>("OnActionComplete", OnActionComplete);
+        }
+
+        ~RoundManager()
+        {
+            EventManager.Instance.UnSubscribe<CharBase>("OnActionComplete", OnActionComplete);
+        }
+
         public void Init()
         {
             round = 0;
             accumalteActionTime = 0;
-            creatures.AddRange(BattleManager.Instance.Team);
+            creatures = BattleManager.Instance.GetUnits();
             for (int i = 0; i < creatures.Count; i++)
             {
                 creatures[i].attributes.ActionTime = 10000 / creatures[i].attributes.SPD;
@@ -58,6 +80,19 @@ namespace Managers
             UpdateActionTime(-(int)creatures[0].attributes.ActionTime);
             BattleManager.Instance.SetCurPlayer(creatures[0]);
             EventManager.Instance.Fire("RoundInit", creatures);
+            RoundPreSettle();
+        }
+
+        public void RoundPreSettle()
+        {
+            roundStatus = RoundStatus.PreSettle;
+            CharBase cha = BattleManager.Instance.CurPlayer;
+            cha.OnPreSettle(); 
+        }
+
+        public void RoundPlayerAction()
+        {
+            roundStatus = RoundStatus.PlayerAction;
         }
 
         public void UpdateActionTime(int time)
@@ -68,9 +103,9 @@ namespace Managers
             }
         }
 
-        public void OnAttack()
+
+        public void OnActionComplete(object sender,CharBase creature)
         {
-            CharBase creature = creatures[0];
             creatures.Remove(creature);
             creatures.Add(creature);
             creature.attributes.CurActionTime = (int)creature.attributes.ActionTime;

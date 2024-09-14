@@ -62,5 +62,21 @@
     "BreakDamage": 100.0,
     "HealAdd": 0.0,
     "EffectHit": 100.0
+  },
+  "5": {
+    "ID": 5,
+    "Name": "银枝",
+    "MaxHP": 100.0,
+    "MaxEnergy": 40.0,
+    "ATK": 10.0,
+    "DEF": 15.0,
+    "CRI": 0.0,
+    "CRDamage": 50.0,
+    "SPD": 130.0,
+    "EnergyRecoveryEfficiency": 100.0,
+    "EffectResistance": 15.0,
+    "BreakDamage": 100.0,
+    "HealAdd": 0.0,
+    "EffectHit": 100.0
   }
 }

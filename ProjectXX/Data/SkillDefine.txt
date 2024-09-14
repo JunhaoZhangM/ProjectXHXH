@@ -204,5 +204,51 @@
       "Type": "Passive",
       "TargetType": "Allied"
     }
+  },
+  "5": {
+    "501": {
+      "ID": 501,
+      "Name": "1",
+      "Description": "角色手持法杖，漂浮半空召唤流行雨，对圆形区域敌方角色造成AOE法术伤害",
+      "AtkRatio": 90,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 6,
+      "EnergyRecovery": 0,
+      "BreakDamage": 10,
+      "Point": 1,
+      "Energy": 10,
+      "Type": "Normal",
+      "TargetType": "Enemy"
+    },
+    "502": {
+      "ID": 502,
+      "Name": "2",
+      "Description": "角色单手指向前方瞬间施法，目标受到一次单体火焰高额伤害，并附带火焰冲击Debuff",
+      "AtkRatio": 100,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 0,
+      "BreakDamage": 20,
+      "Point": -1,
+      "Energy": 20,
+      "Type": "Special",
+      "TargetType": "Enemy"
+    },
+    "503": {
+      "ID": 503,
+      "Name": "3",
+      "AtkRatio": 120,
+      "DamageRatio": 0,
+      "LockLevel": 1,
+      "MaxUpgradeLevel": 10,
+      "EnergyRecovery": 100,
+      "BreakDamage": 20,
+      "Point": 0,
+      "Energy": -100,
+      "Type": "Ultimate",
+      "TargetType": "Enemy"
+    }
   }
 }

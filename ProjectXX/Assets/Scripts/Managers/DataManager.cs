@@ -15,6 +15,7 @@ namespace Managers
         public string DataPath="Data/";
         public Dictionary<int, CharacterDefine> Characters = null;
         public Dictionary<int, Dictionary<int,SkillDefine>> Skills = null;
+        public Dictionary<int, BuffDefine> Buffs = null;
 
         public DataManager()
         {
@@ -26,9 +27,12 @@ namespace Managers
         {
             string json = File.ReadAllText(DataPath + "CharacterDefine.txt");
             Characters = JsonConvert.DeserializeObject<Dictionary<int, CharacterDefine>>(json);
+
             json = File.ReadAllText(DataPath + "SkillDefine.txt");
             Skills = JsonConvert.DeserializeObject<Dictionary<int, Dictionary<int, SkillDefine>>>(json);
 
+            json = File.ReadAllText(DataPath + "BuffDefine.txt");
+            Buffs = JsonConvert.DeserializeObject<Dictionary<int, BuffDefine>>(json);
         }
     }
 }

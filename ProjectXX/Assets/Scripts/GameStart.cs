@@ -18,6 +18,7 @@ public class GameStart : MonoBehaviour
     {
         DataManager.Instance.Load();
         EventManager.Instance.Init();
+        User.Instance.Init();
 
         ResourceManager.Instance.Init();
         UIManager.Instance.SetUIGroup(5);
@@ -29,8 +30,7 @@ public class GameStart : MonoBehaviour
     public void TestBattle()
     {
         UIManager.Instance.OpenUI("UIBattle", 2);
-        BattleManager.Instance.Init(CharacterID);
-        RoundManager.Instance.Init();
+        BattleManager.Instance.Init();
         Debug.Log("---------------------------");
         for (int i = 0; i < RoundManager.Instance.creatures.Count; i++)
         {
@@ -40,26 +40,11 @@ public class GameStart : MonoBehaviour
         }
     }
 
-    public void Test()
-    {
 
-    }
-    public void SpeedUp()
+    public void TestBuff()
     {
-        BuffDefine define = new BuffDefine();
-        define.BuffType = BuffType.Attributes;
-        define.ActionTimeRatio = 50;
-        Buff buff = new Buff(define);
-        buff.DoBuff(RoundManager.Instance.creatures[2]);
-        Debug.Log("---------------------------");
-        Debug.Log("SpeedUp Character :" + RoundManager.Instance.creatures[2].name);
-        RoundManager.Instance.OnUpdate();
-        for (int i = 0; i < RoundManager.Instance.creatures.Count; i++)
-        {
-            CharBase creature = RoundManager.Instance.creatures[i];
-            Debug.LogFormat("Character Name : {0}  Speed:{1} ActionTime:{2} CurActionTime:{3}",
-            creature.name, creature.attributes.SPD, creature.attributes.ActionTime, creature.attributes.CurActionTime);
-        }
+        BattleManager.Instance.CurPlayer.AddBuff(1, null);
+        BattleManager.Instance.CurPlayer.BuffMgr.DebugAllBuff();
     }
 
     void Update()

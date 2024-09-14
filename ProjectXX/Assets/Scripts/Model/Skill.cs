@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Battle;
 using Data;
 using Entities;
 using Managers;
@@ -8,16 +10,32 @@ namespace Model
     public class Skill
     {
         public SkillDefine define;
-        public Skill(SkillDefine define)
+        public CharBase Owner;
+        public List<CharBase> Target;
+        public int cdRound;
+        public Skill(SkillDefine define,CharBase owner)
         {
             this.define = define;
+            Owner = owner;
         }
 
         public void CastSkill()
         {
-            bool castResult = checkCast();
+            SkillResult castResult = checkCast(BattleManager.Instance.CurTarget);
 
-            RoundManager.Instance.OnAttack();
+            if (castResult == SkillResult.LackOfPoint)
+            {
+
+            }else if(castResult == SkillResult.LackOfEnergy)
+            {
+
+            }
+            else
+            {
+                
+            }
+
+            Owner.OnComplete();
             //for (int i = 0; i < RoundManager.Instance.creatures.Count; i++)
             //{
                 //CharBase creature = RoundManager.Instance.creatures[i];
@@ -26,9 +44,17 @@ namespace Model
             //}
         }
 
-        public bool checkCast()
+        public SkillResult checkCast(List<CharBase> target)
         {
-            return true;
+            if (define.Point > BattleManager.Instance.CurPoint)
+            {
+                return SkillResult.LackOfPoint;
+            }
+            else if (define.Point > Owner.attributes.Energy)
+            {
+                return SkillResult.LackOfEnergy;
+            }
+            else return SkillResult.OK;
         }
     }
 }
