@@ -13,11 +13,15 @@ namespace Model
         public SkillDefine define;
         public CharBase Owner;
         public List<CharBase> Target;
+
+        public List<string> Animations;
+
         public int cdRound;
         public Skill(SkillDefine define,CharBase owner)
         {
             this.define = define;
             Owner = owner;
+            Animations = new List<string>(define.SkillAnimation.Split("/"));
         }
 
         public void CastSkill()
@@ -36,7 +40,7 @@ namespace Model
                 
             }
 
-            Owner.PlayAnim(define.SkillAnimation);
+            Owner.PlayAnim(Animations);
             EventManager.Instance.Fire(EventString.OnPlayerActionEnd,Owner);
             //for (int i = 0; i < RoundManager.Instance.creatures.Count; i++)
             //{

@@ -4,6 +4,7 @@ using Event;
 using GameObjectController;
 using Managers;
 using Model;
+using System;
 using System.Collections.Generic;
 
 namespace Battle
@@ -16,10 +17,19 @@ namespace Battle
 
         public List<CharBase> CurTarget;
 
+        public Action OnBattleBegin;
+
+        int entitySum = 0;
+
         public int CurPoint;  //当前能量豆
         public int MaxPoint;  //能量豆上限
 
-        public void Init(List<int> team,TargetType teamType)
+        public void Init()
+        {
+
+        }
+
+        public void JoinTeam(List<int> team,TargetType teamType)
         {
             for(int i = 0; i < team.Count; i++)
             {
@@ -32,13 +42,18 @@ namespace Battle
             }
         }
 
-        public void Init()
+        public void JoinBattle()
         {
-            Units.AddRange(User.Instance.GetCurCharacter());
+            List<CharBase> Players = User.Instance.GetCurCharacter();
+            for (int i = 0; i < Players.Count; i++)
+            {
+                Players[i].entityID = ++entitySum;
+                Units.Add(Players[i]);
+            }
             List<int> MosnterID = new List<int>();
             //MosnterID.Add(5);
             //Init(MosnterID, TargetType.Enemy);
-            RoundManager.Instance.Init();
+            OnBattleBegin?.Invoke();
         }
 
         public void SetCurPlayer(CharBase Player)

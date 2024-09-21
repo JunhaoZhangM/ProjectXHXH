@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: char_110_deepcl_Material
-  m_Shader: {fileID: 4800000, guid: 78ad7b6bcaf7e904481e02c9f95ce18e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9f253724b2d29a3438eeea48277c25cb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:

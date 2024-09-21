@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.esotericsoftware.spine.urp-shaders": {
-      "version": "file:E:/com.esotericsoftware.spine.urp-shaders-4.1-Unity2019.3-2023-10-26/com.esotericsoftware.spine.urp-shaders-4.1-2019.1",
+      "version": "file:D:/UnityProject/Demo/LocalPlugins/com.esotericsoftware.spine.urp-shaders-4.1-2019.1",
       "depth": 0,
       "source": "local",
       "dependencies": {
@@ -9,11 +9,12 @@
       }
     },
     "com.unity.burst": {
-      "version": "1.8.7",
+      "version": "1.8.16",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.mathematics": "1.2.1"
+        "com.unity.mathematics": "1.2.1",
+        "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.cn"
     },
@@ -80,7 +81,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.render-pipelines.core": {
-      "version": "14.0.8",
+      "version": "14.0.11",
       "depth": 1,
       "source": "builtin",
       "dependencies": {
@@ -96,9 +97,18 @@
       "source": "builtin",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
-        "com.unity.burst": "1.8.4",
-        "com.unity.render-pipelines.core": "14.0.8",
-        "com.unity.shadergraph": "14.0.8"
+        "com.unity.burst": "1.8.9",
+        "com.unity.render-pipelines.core": "14.0.11",
+        "com.unity.shadergraph": "14.0.11",
+        "com.unity.render-pipelines.universal-config": "14.0.9"
+      }
+    },
+    "com.unity.render-pipelines.universal-config": {
+      "version": "14.0.10",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "14.0.10"
       }
     },
     "com.unity.searcher": {
@@ -109,11 +119,11 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.shadergraph": {
-      "version": "14.0.8",
+      "version": "14.0.11",
       "depth": 1,
       "source": "builtin",
       "dependencies": {
-        "com.unity.render-pipelines.core": "14.0.8",
+        "com.unity.render-pipelines.core": "14.0.11",
         "com.unity.searcher": "4.9.2"
       }
     },
