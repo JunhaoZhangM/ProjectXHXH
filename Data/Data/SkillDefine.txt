@@ -3,6 +3,7 @@
     "101": {
       "ID": 101,
       "Name": "夜间喧嚣不止",
+      "SkillAnimation": "Attack_Start/Attack_Loop/Attack_End",
       "AtkRatio": 90,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -18,6 +19,7 @@
       "ID": 102,
       "Name": "月光婆娑连绵",
       "Description": "角色选定目标，并对目标发起冲锋并造成伤害，被冲锋的目标原地眩晕2秒",
+      "SkillAnimation": "Attack_Start/Attack_Loop/Attack_End",
       "AtkRatio": 100,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -32,6 +34,7 @@
     "103": {
       "ID": 103,
       "Name": "悲剧尽头的颤音",
+      "SkillAnimation": "Attack_Start/Attack_Loop/Attack_End",
       "AtkRatio": 120,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -48,6 +51,7 @@
     "201": {
       "ID": 201,
       "Name": "|系统警告|",
+      "SkillAnimation": "Attack",
       "AtkRatio": 90,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -63,6 +67,7 @@
       "ID": 202,
       "Name": "是否允许更改？",
       "Description": "角色空手凝聚火焰能量球（蓄力），之后先前推出火球伤害敌方角色",
+      "SkillAnimation": "Attack",
       "AtkRatio": 100,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -77,6 +82,7 @@
     "203": {
       "ID": 203,
       "Name": "|账号已封禁|",
+      "SkillAnimation": "Attack",
       "AtkRatio": 120,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -94,6 +100,7 @@
       "ID": 301,
       "Name": "三途枯榷",
       "Description": "角色手持法杖，漂浮半空召唤流行雨，对圆形区域敌方角色造成AOE法术伤害",
+      "SkillAnimation": "Attack",
       "AtkRatio": 90,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -109,6 +116,7 @@
       "ID": 302,
       "Name": "八雷飞渡",
       "Description": "角色单手指向前方瞬间施法，目标受到一次单体火焰高额伤害，并附带火焰冲击Debuff",
+      "SkillAnimation": "Attack",
       "AtkRatio": 100,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -123,6 +131,7 @@
     "303": {
       "ID": 303,
       "Name": "残梦尽染，一刀缭断",
+      "SkillAnimation": "Attack",
       "AtkRatio": 120,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -139,6 +148,7 @@
     "401": {
       "ID": 401,
       "Name": "驭风的子弹",
+      "SkillAnimation": "Attack",
       "AtkRatio": 90,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -154,6 +164,7 @@
       "ID": 402,
       "Name": "作战再部署",
       "Description": "角色蓄力拉出满弓，射出流血箭，对目标造成大量伤害，并造成流血效果",
+      "SkillAnimation": "Attack",
       "AtkRatio": 100,
       "DamageRatio": 0,
       "Buff": [
@@ -174,6 +185,7 @@
       "ID": 403,
       "Name": "贝洛伯格进行曲",
       "Description": "角色选定一个圆形区域并持弓向天射出多支毒箭，对区域内目标造成一次物理伤害并使区域内目标中毒",
+      "SkillAnimation": "Attack",
       "AtkRatio": 120,
       "DamageRatio": 0,
       "Buff": [
@@ -193,6 +205,7 @@
       "ID": 304,
       "Name": "先人一步",
       "Description": "角色持弓对单个目标连射三箭，每箭伤害递增并最终造成大量物理伤害",
+      "SkillAnimation": "Attack",
       "AtkRatio": 0,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -210,6 +223,7 @@
       "ID": 501,
       "Name": "1",
       "Description": "角色手持法杖，漂浮半空召唤流行雨，对圆形区域敌方角色造成AOE法术伤害",
+      "SkillAnimation": "Attack",
       "AtkRatio": 90,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -225,6 +239,7 @@
       "ID": 502,
       "Name": "2",
       "Description": "角色单手指向前方瞬间施法，目标受到一次单体火焰高额伤害，并附带火焰冲击Debuff",
+      "SkillAnimation": "Attack",
       "AtkRatio": 100,
       "DamageRatio": 0,
       "LockLevel": 1,
@@ -239,6 +254,7 @@
     "503": {
       "ID": 503,
       "Name": "3",
+      "SkillAnimation": "Attack",
       "AtkRatio": 120,
       "DamageRatio": 0,
       "LockLevel": 1,

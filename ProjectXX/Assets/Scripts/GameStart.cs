@@ -23,14 +23,16 @@ public class GameStart : MonoBehaviour
         ResourceManager.Instance.Init();
         UIManager.Instance.SetUIGroup(5);
         PoolManager.Instance.CreateGameObjectPool("UI", 10);
-
+        RoundManager.Instance.Init();
+        BattleManager.Instance.Init();
 
     }
 
     public void TestBattle()
     {
         UIManager.Instance.OpenUI("UIBattle", 2);
-        BattleManager.Instance.Init();
+
+        BattleManager.Instance.JoinBattle();
         Debug.Log("---------------------------");
         for (int i = 0; i < RoundManager.Instance.creatures.Count; i++)
         {

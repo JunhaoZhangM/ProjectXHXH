@@ -1,27 +1,32 @@
 ﻿using Battle;
 using Entities;
 using Event;
-using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Managers;
 
 namespace GameObjectController
 {
     class GameObjectManager : MonoSingleton<GameObjectManager>
     {
-        public Dictionary<int, GameObject> Creatures = new Dictionary<int, GameObject>();
-        public List<GameObject> Test = new List<GameObject>();
+        public Dictionary<int, GameObject> Entities = new Dictionary<int, GameObject>();
+        public List<Transform> SpawnPoints = new List<Transform>();
 
-        public void Awake()
+        protected override void OnStart()
         {
-            EventManager.Instance.Subscribe<object>(EventString.OnBattleBegin, OnBattleBegin);
+            BattleManager.Instance.OnBattleBegin += OnBattleBegin;
         }
 
-        private void OnBattleBegin(object arg1, object arg2)
+        private void OnDestroy()
+        {
+            BattleManager.Instance.OnBattleBegin -= OnBattleBegin;
+        }
+
+        private void OnBattleBegin()
         {
             StartCoroutine(InitGameObject());
         }
@@ -30,17 +35,29 @@ namespace GameObjectController
         {
             for(int i = 0; i < BattleManager.Instance.Units.Count; i++)
             {
-                AssignGameObject(BattleManager.Instance.Units[i], Test[i]);
+                CreateGameObject(BattleManager.Instance.Units[i], SpawnPoints[i]);
             }
             yield return null;
         }
 
-        public void AssignGameObject(CharBase creature,GameObject gameObject)
+        public void CreateGameObject(CharBase creature,Transform point)
         {
-            EntityController ec = gameObject.GetComponent<EntityController>();
+            if (Entities.ContainsKey(creature.entityID)) return;
+
+            Object obj = ResourceManager.Instance.Load<Object>(creature.define.ModelResource);
+            if(obj == null)
+            {
+                Debug.LogFormat("Character:{[0]} ModelResource:{[1]} not existed", creature.define.Name, creature.define.ModelResource);
+                return;
+            }
+            GameObject go = (GameObject)Instantiate(obj, point);
+            go.name = "Entity_" + creature.entityID + "_" + creature.define.Name;
+            Entities[creature.entityID] = go;
+            EntityController ec = go.GetComponent<EntityController>();
+            if (ec == null) return;
             ec.entity = creature;
             creature.Controller = ec;
-            Creatures.Add(creature.entityID, gameObject);
+
             Debug.LogFormat("{0}:{1}",ec.gameObject.name,creature.name);
         }
     }

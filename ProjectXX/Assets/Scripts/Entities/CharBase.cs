@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Data;
 using Event;
 using GameObjectController;
@@ -102,7 +103,7 @@ namespace Entities
             }
         }
 
-        public void PlayAnim(string anim)
+        public void PlayAnim(List<string> anim)
         {
             if (Controller != null)
             {

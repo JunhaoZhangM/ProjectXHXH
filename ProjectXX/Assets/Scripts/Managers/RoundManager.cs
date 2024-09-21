@@ -59,6 +59,7 @@ namespace Managers
 
         public RoundManager()
         {
+            BattleManager.Instance.OnBattleBegin += OnBattleBegin;
             EventManager.Instance.Subscribe<CharBase>(EventString.OnActionComplete, OnActionComplete);
             EventManager.Instance.Subscribe<CharBase>(EventString.OnPreSettleEnd, RoundPlayerAction);
             EventManager.Instance.Subscribe<CharBase>(EventString.OnPlayerActionEnd, RoundEnd);
@@ -67,10 +68,19 @@ namespace Managers
 
         ~RoundManager()
         {
+            BattleManager.Instance.OnBattleBegin -= OnBattleBegin;
             EventManager.Instance.UnSubscribe<CharBase>(EventString.OnActionComplete, OnActionComplete);
+            EventManager.Instance.UnSubscribe<CharBase>(EventString.OnPreSettleEnd, RoundPlayerAction);
+            EventManager.Instance.UnSubscribe<CharBase>(EventString.OnPlayerActionEnd, RoundEnd);
+            EventManager.Instance.UnSubscribe<CharBase>(EventString.OnRoundEnd, RoundPreSettle);
+        }
+        
+        public void Init()
+        {
+
         }
 
-        public void Init()
+        public void OnBattleBegin()
         {
             round = 0;
             accumalteActionTime = 0;
