@@ -3,12 +3,23 @@ using System.Collections.Generic;
 
 namespace Event
 {
+    public enum EventString
+    {
+        OnActionComplete,
+        OnPlayerActionEnd,
+        OnPlayerChange,
+        OnPreSettleEnd,
+        OnRoundEnd,
+        ActionTimeUpdate,
+        RoundInit,
+        OnBattleBegin
+    }
     // 定义自定义的事件参数类，避免与系统的 EventArgs 冲突
 
     public class EventManager : Singleton<EventManager>
     {
         // 使用字典存储事件名称和对应的事件处理程序链
-        private Dictionary<string,Delegate> eventHandlers = new Dictionary<string, Delegate>();
+        private Dictionary<EventString, Delegate> eventHandlers = new Dictionary<EventString, Delegate>();
 
         // 初始化方法
         public void Init()
@@ -16,7 +27,7 @@ namespace Event
         }
 
         // 订阅事件
-        public void Subscribe<T>(string eventName, Action<object, T> handler)
+        public void Subscribe<T>(EventString eventName, Action<object, T> handler)
         {
             if (handler == null)
             {
@@ -38,7 +49,7 @@ namespace Event
 
 
         // 取消订阅事件
-        public void UnSubscribe<T>(string eventName, Action<object, T> handler)
+        public void UnSubscribe<T>(EventString eventName, Action<object, T> handler)
         {
             if (eventHandlers.TryGetValue(eventName, out Delegate eventHandler))
             {
@@ -58,7 +69,7 @@ namespace Event
         }
 
         // 触发事件
-        public void Fire<T>(string eventName, object sender , T args)
+        public void Fire<T>(EventString eventName, object sender , T args)
         {
             if (eventHandlers.TryGetValue(eventName, out Delegate eventHandler))
             {
@@ -69,12 +80,12 @@ namespace Event
             }
         }
 
-        public void Fire<T>(string eventName,T args)
+        public void Fire<T>(EventString eventName,T args)
         {
             Fire(eventName, null, args);
         }
 
-        public void Fire(string eventName)
+        public void Fire(EventString eventName)
         {
             Fire<object>(eventName, null, null);
         }

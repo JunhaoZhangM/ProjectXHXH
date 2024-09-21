@@ -1,6 +1,7 @@
 using System;
 using Data;
 using Event;
+using GameObjectController;
 using Managers;
 using Model;
 using UnityEngine;
@@ -32,6 +33,8 @@ namespace Entities
         public CharacterDefine define;
         public TargetType Faction;
 
+        public IEntityController Controller;
+
         public Action<Buff> OnAddBuff;
         public Action<Buff> OnRemoveBuff;
         public Action<DamageInfo> OnDamage;
@@ -43,14 +46,11 @@ namespace Entities
 
         }
 
-        public void OnComplete()
+        public void OnRoundEnd()
         {
-            EventManager.Instance.Fire("OnActionComplete", this);
-        }
-
-        public void DoSkill()
-        {
-
+            BuffMgr.OnRoundEnd();
+            EventManager.Instance.Fire(EventString.OnActionComplete, this);
+            EventManager.Instance.Fire(EventString.OnRoundEnd, this);
         }
 
         public void Death()
@@ -70,6 +70,7 @@ namespace Entities
         {
             BuffMgr.PreSettle();
 
+            EventManager.Instance.Fire(EventString.OnPreSettleEnd, this);
         }
 
         public void AddBuff(int buffId,CharBase caster)
@@ -81,9 +82,13 @@ namespace Entities
             }
         }
 
-        public void RemoveBuff()
+        public void RemoveBuff(int buffId)
         {
-
+            var buff = BuffMgr.RemoveBuff(buffId);
+            if (buff != null && OnAddBuff != null)
+            {
+                OnRemoveBuff(buff);
+            }
         }
 
         public void DoDamage(float damage, CharBase caster, bool isCrit = false)
@@ -94,6 +99,22 @@ namespace Entities
             if (attributes.HP <= 0)
             {
                 OnDeath?.Invoke(this);
+            }
+        }
+
+        public void PlayAnim(string anim)
+        {
+            if (Controller != null)
+            {
+                Controller.PlayAnim(anim);
+            }
+        }
+
+        public void PlayEffect(string effect)
+        {
+            if (Controller != null)
+            {
+                Controller.PlayEffect(effect);
             }
         }
     }

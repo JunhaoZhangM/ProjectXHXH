@@ -22,6 +22,7 @@ namespace Model
             BuffId = define.ID;
             Caster = caster;
             Owner = owner;
+            round = define.LastRound;
         }
 
         public void DoBuff(CharBase target)
@@ -57,6 +58,11 @@ namespace Model
             {
 
             }
+        }
+
+        public void OnRoundEnd()
+        {
+            round--;
         }
     }
 }

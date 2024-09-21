@@ -36,8 +36,8 @@ namespace Battle
         {
             Units.AddRange(User.Instance.GetCurCharacter());
             List<int> MosnterID = new List<int>();
-            MosnterID.Add(5);
-            Init(MosnterID, TargetType.Enemy);
+            //MosnterID.Add(5);
+            //Init(MosnterID, TargetType.Enemy);
             RoundManager.Instance.Init();
         }
 

@@ -18,7 +18,7 @@ namespace GameObjectController
 
         public void Awake()
         {
-            EventManager.Instance.Subscribe<object>("OnBattleBegin", OnBattleBegin);
+            EventManager.Instance.Subscribe<object>(EventString.OnBattleBegin, OnBattleBegin);
         }
 
         private void OnBattleBegin(object arg1, object arg2)

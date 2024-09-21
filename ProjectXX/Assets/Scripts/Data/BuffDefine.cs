@@ -47,5 +47,6 @@ namespace Data
         public ElementType ElementType { get; set; }
         public float ElementRatio { get; set; }
         public float SpeedRatio { get; set; }
+        public string FX { get; set; }
     }
 }

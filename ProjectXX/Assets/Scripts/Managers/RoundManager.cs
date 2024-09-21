@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Battle;
@@ -58,12 +59,15 @@ namespace Managers
 
         public RoundManager()
         {
-            EventManager.Instance.Subscribe<CharBase>("OnActionComplete", OnActionComplete);
+            EventManager.Instance.Subscribe<CharBase>(EventString.OnActionComplete, OnActionComplete);
+            EventManager.Instance.Subscribe<CharBase>(EventString.OnPreSettleEnd, RoundPlayerAction);
+            EventManager.Instance.Subscribe<CharBase>(EventString.OnPlayerActionEnd, RoundEnd);
+            EventManager.Instance.Subscribe<CharBase>(EventString.OnRoundEnd, RoundPreSettle);
         }
 
         ~RoundManager()
         {
-            EventManager.Instance.UnSubscribe<CharBase>("OnActionComplete", OnActionComplete);
+            EventManager.Instance.UnSubscribe<CharBase>(EventString.OnActionComplete, OnActionComplete);
         }
 
         public void Init()
@@ -79,20 +83,26 @@ namespace Managers
             creatures.Sort(AC);
             UpdateActionTime(-(int)creatures[0].attributes.ActionTime);
             BattleManager.Instance.SetCurPlayer(creatures[0]);
-            EventManager.Instance.Fire("RoundInit", creatures);
-            RoundPreSettle();
+            EventManager.Instance.Fire(EventString.RoundInit, creatures);
+            RoundPreSettle(null,null);
         }
 
-        public void RoundPreSettle()
+        public void RoundPreSettle(object sender,CharBase Precha)
         {
             roundStatus = RoundStatus.PreSettle;
             CharBase cha = BattleManager.Instance.CurPlayer;
-            cha.OnPreSettle(); 
+            cha.OnPreSettle();
         }
 
-        public void RoundPlayerAction()
+        public void RoundPlayerAction(object sender,CharBase cha)
         {
             roundStatus = RoundStatus.PlayerAction;
+        }
+
+        private void RoundEnd(object arg1, CharBase cha)
+        {
+            roundStatus = RoundStatus.RoundEnd;
+            cha.OnRoundEnd();
         }
 
         public void UpdateActionTime(int time)
@@ -116,7 +126,7 @@ namespace Managers
         {
             creatures.Sort(AC);
             BattleManager.Instance.SetCurPlayer(creatures[0]);
-            EventManager.Instance.Fire("ActionTimeUpdate",creatures);
+            EventManager.Instance.Fire(EventString.ActionTimeUpdate,creatures);
         }
     }
 }

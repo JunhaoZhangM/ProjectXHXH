@@ -9,7 +9,7 @@ public class TestArrow : MonoBehaviour
 {
     public void Awake()
     {
-        EventManager.Instance.Subscribe<CharBase>("OnPlayerChange", OnChange);
+        EventManager.Instance.Subscribe<CharBase>(EventString.OnPlayerChange, OnChange);
     }
 
     private void OnChange(object arg1, CharBase cur)

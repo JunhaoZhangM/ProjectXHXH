@@ -24,5 +24,15 @@ namespace GameObjectController
         {
             isCurPlayer = isPlayer;
         }
+
+        public void PlayAnim(string anim)
+        {
+            
+        }
+
+        public void PlayEffect(string effect)
+        {
+            
+        }
     }
 }

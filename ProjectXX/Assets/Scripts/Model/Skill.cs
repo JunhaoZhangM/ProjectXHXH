@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Battle;
 using Data;
 using Entities;
+using Event;
 using Managers;
 
 namespace Model
@@ -35,7 +36,8 @@ namespace Model
                 
             }
 
-            Owner.OnComplete();
+            Owner.PlayAnim(define.SkillAnimation);
+            EventManager.Instance.Fire(EventString.OnPlayerActionEnd,Owner);
             //for (int i = 0; i < RoundManager.Instance.creatures.Count; i++)
             //{
                 //CharBase creature = RoundManager.Instance.creatures[i];

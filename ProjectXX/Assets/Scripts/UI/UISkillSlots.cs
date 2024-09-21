@@ -12,7 +12,7 @@ public class UISkillSlots : MonoBehaviour
 
     public void Awake()
     {
-        EventManager.Instance.Subscribe<CharBase>("OnPlayerChange", Refresh);
+        EventManager.Instance.Subscribe<CharBase>(EventString.OnPreSettleEnd, Refresh);
     }
 
     private void Refresh(object arg1, CharBase player)
@@ -34,6 +34,6 @@ public class UISkillSlots : MonoBehaviour
 
     public void OnDestroy()
     {
-        EventManager.Instance.UnSubscribe<CharBase>("OnPlayerChange", Refresh);
+        EventManager.Instance.UnSubscribe<CharBase>(EventString.OnPlayerChange, Refresh);
     }
 }

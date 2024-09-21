@@ -17,14 +17,14 @@ public class UIActionBar : UIBase,IPointerEnterHandler, IPointerExitHandler
 
     private void Awake()
     {
-        EventManager.Instance.Subscribe<List<CharBase>>("RoundInit", OnInit);
-        EventManager.Instance.Subscribe<List<CharBase>>("ActionTimeUpdate", OnActionTimeUpdate);
+        EventManager.Instance.Subscribe<List<CharBase>>(EventString.RoundInit, OnInit);
+        EventManager.Instance.Subscribe<List<CharBase>>(EventString.ActionTimeUpdate, OnActionTimeUpdate);
     }
 
     private void OnDisable()
     {
-        EventManager.Instance.UnSubscribe<List<CharBase>>("RoundInit", OnInit);
-        EventManager.Instance.UnSubscribe<List<CharBase>>("ActionTimeUpdate", OnActionTimeUpdate);
+        EventManager.Instance.UnSubscribe<List<CharBase>>(EventString.RoundInit, OnInit);
+        EventManager.Instance.UnSubscribe<List<CharBase>>(EventString.ActionTimeUpdate, OnActionTimeUpdate);
     }
 
     public void OnInit(object arg1,List<CharBase> creatures)

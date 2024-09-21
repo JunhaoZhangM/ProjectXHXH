@@ -34,8 +34,8 @@ public class UITeam : MonoBehaviour
 
     void Awake()
     {
-        EventManager.Instance.Subscribe<object>("OnBattleBegin", OnBattleBegin);
-        EventManager.Instance.Subscribe<CharBase>("OnPlayerChange", OnPlayerChange);
+        EventManager.Instance.Subscribe<object>(EventString.OnBattleBegin, OnBattleBegin);
+        EventManager.Instance.Subscribe<CharBase>(EventString.OnPlayerChange, OnPlayerChange);
     }
 
     private void OnPlayerChange(object arg1, CharBase creature)

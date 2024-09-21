@@ -16,6 +16,8 @@ namespace Managers
 
         public Dictionary<int, Buff> Buffs = new Dictionary<int, Buff>();
 
+        List<int> needRemove = new List<int>();
+
         public BuffManager(CharBase owner)
         {
             this.Owner = owner;
@@ -55,6 +57,23 @@ namespace Managers
             foreach(var kv in Buffs)
             {
                 kv.Value.OnPreSettle();
+            }
+        }
+
+        public void OnRoundEnd()
+        {
+            needRemove.Clear();
+            foreach(var kv in Buffs)
+            {
+                kv.Value.OnRoundEnd();
+                if (kv.Value.round == 0)
+                {
+                    needRemove.Add(kv.Key);
+                }
+            }
+            foreach(var k in needRemove)
+            {
+                Owner.RemoveBuff(k);
             }
         }
 

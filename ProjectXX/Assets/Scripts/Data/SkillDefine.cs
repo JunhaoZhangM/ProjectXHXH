@@ -18,8 +18,9 @@ namespace Data
         public int Point { get; set; }
         public int Energy { get; set; }
         public SkillType Type { get; set; }
+        public string SkillAnimation { get; set; }
         public TargetType TargetType { get; set; }
-        public List<int> FX { get; set; }
+        public List<string> FX { get; set; }
     }
     public enum SkillType
     {
